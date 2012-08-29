@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category   Baobaz
+ * @package    Baobaz_Social
+ * @copyright  Copyright (c) 2011 Baobaz (http://www.baobaz.com)
+ * @author     Arnaud Ligny <arnaud.ligny@baobaz.com>
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <sections>
+        <social translate="label" module="baobaz_social">
+            <label>Social</label>
+            <tab>general</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <opengraph translate="label">
+                    <label>Open Graph Tags</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <comment>Available properties: title, type, image, url, site_name</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </opengraph>
+                <facebook translate="label">
+                    <label>Facebook</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>101</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <admins translate="label comment">
+                            <label>Admins ID</label>
+                            <comment>A comma-separated list of either the Facebook IDs of page administrators.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </admins>
+                        <page_id translate="label">
+                            <label>Fan page ID</label>
+                            <comment>Facebook fan page ID.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </page_id>
+                        <appid translate="label comment">
+                            <label>Application ID</label>
+                            <comment>Facebook Platform application ID.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </appid>
+                    </fields>
+                </facebook>
+                <facebook_likebutton translate="label">
+                    <label>Facebook Like Button</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>102</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <href translate="label comment">
+                            <label>URL</label>
+                            <comment>The URL to like. Use this field to force URL.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-clean-url</validate>
+                        </href>
+                        <format translate="label">
+                            <label>Format</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>baobaz_social/adminhtml_system_config_source_facebook_format</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </format>
+                        <send translate="label">
+                            <label>Send button</label>
+                            <omment>Include a Send button with the Like button.</omment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><format>XFBML</format></depends>
+                        </send>
+                        <layout translate="label">
+                            <label>Layout style</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>baobaz_social/adminhtml_system_config_source_facebook_layout</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </layout>
+                        <showfaces translate="label">
+                            <label>Show faces</label>
+                            <comment>Display profile photos below the button (standard layout only).</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showfaces>
+                        <action translate="label">
+                            <label>Action</label>
+                            <omment>The verb to display on the button.</omment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>baobaz_social/adminhtml_system_config_source_facebook_action</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </action>
+                        <font translate="label">
+                            <label>Font</label>
+                            <comment>The font to display in the button.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>baobaz_social/adminhtml_system_config_source_facebook_font</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </font>
+                        <colorscheme translate="label">
+                            <label>Color scheme</label>
+                            <comment>The color scheme for the like button.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>baobaz_social/adminhtml_system_config_source_facebook_colorscheme</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </colorscheme>
+                    </fields>
+                </facebook_likebutton>
+                <facebook_comments translate="label">
+                    <label>Facebook Comments</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>103</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <href translate="label comment">
+                            <label>URL</label>
+                            <comment>The URL page to comment. Use this field to force URL.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-clean-url</validate>
+                        </href>
+                        <width translate="label comment">
+                            <label>With</label>
+                            <comment>The width of the plugin in pixels. Minimum recommended width: 400px.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </width>
+                        <num_posts translate="label comment">
+                            <label>Num of posts</label>
+                            <comment>The number of comments to show by default. Default: 10. Minimum: 1.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </num_posts>
+                        <colorscheme translate="label">
+                            <label>Color scheme</label>
+                            <comment>The color scheme for the plugin.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>baobaz_social/adminhtml_system_config_source_facebook_colorscheme</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </colorscheme>
+                    </fields>
+                </facebook_comments>
+                <twitter_tweetbutton translate="label">
+                    <label>Twitter Tweet Button</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>104</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <url translate="label comment">
+                            <label>URL</label>
+                            <comment>URL of the page to share. Leave empty to use current URL.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-clean-url</validate>
+                        </url>
+                        <via translate="label comment">
+                            <label>Via</label>
+                            <comment>Screen name of the user to attribute the Tweet to.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </via>
+                        <text translate="label comment">
+                            <label>Text</label>
+                            <comment>Default Tweet text. Leave empty to use meta title.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </text>
+                        <related translate="label comment">
+                            <label>Related</label>
+                            <comment>Related accounts. ie: 'anywhere:The Javascript API,sitestreams,twitter:The official account'</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </related>
+                        <count translate="label comment">
+                            <label>Count box</label>
+                            <comment>Count box position</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>baobaz_social/adminhtml_system_config_source_twitter_count</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </count>
+                    </fields>
+                </twitter_tweetbutton>
+                <google_plusonebutton translate="label">
+                    <label>Google Plus One Button</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>105</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <href translate="label comment">
+                            <label>URL</label>
+                            <comment>The URL to +1. Use this field to force URL.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-clean-url</validate>
+                        </href>
+                        <size translate="label comment">
+                            <label>Button size</label>
+                            <comment>The button size to render.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>baobaz_social/adminhtml_system_config_source_google_size</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </size>
+                        <annotation translate="label comment">
+                            <label>Annotation</label>
+                            <comment>The annotation to display next to the button.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>baobaz_social/adminhtml_system_config_source_google_annotation</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </annotation>
+                        <width translate="label comment">
+                            <label>Width</label>
+                            <comment>If annotation is set to "inline", the width in pixels to use for the button and its inline annotation.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </width>
+                        <expandto translate="label comment">
+                            <label>Expand to</label>
+                            <comment>The preferred positions in which to display hover and confirmation bubbles, relative to the button.</comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>baobaz_social/adminhtml_system_config_source_google_expandto</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </expandto>
+                    </fields>
+                </google_plusonebutton>
+            </groups>
+        </social>
+    </sections>
+</config>

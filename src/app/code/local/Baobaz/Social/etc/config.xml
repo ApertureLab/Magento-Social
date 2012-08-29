@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category   Baobaz
+ * @package    Baobaz_Social
+ * @copyright  Copyright (c) 2011 Baobaz (http://www.baobaz.com)
+ * @author     Arnaud Ligny <arnaud.ligny@baobaz.com>
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Baobaz_Social>
+            <version>0.0.4</version>
+        </Baobaz_Social>
+    </modules>
+    <global>
+        <blocks>
+            <baobaz_social>
+                <class>Baobaz_Social_Block</class>
+            </baobaz_social>
+        </blocks>
+        <helpers>
+            <baobaz_social>
+                <class>Baobaz_Social_Helper</class>
+            </baobaz_social>
+        </helpers>
+        <models>
+            <baobaz_social>
+                <class>Baobaz_Social_Model</class>
+            </baobaz_social>
+        </models>
+        <resources>
+            <baobaz_social_setup>
+                <setup>
+                    <module>Baobaz_Social</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </baobaz_social_setup>
+            <baobaz_social_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </baobaz_social_write>
+            <baobaz_social_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </baobaz_social_read>
+        </resources>
+    </global>
+    <frontend>
+        <events>
+            <!-- Before product page render -->
+            <controller_action_layout_render_before_catalog_product_view>
+                <observers>
+                    <!-- Product Open Graph -->
+                    <baobaz_social_layout_head_meta_og_add>
+                        <type>singleton</type>
+                        <class>baobaz_social/observer</class>
+                        <method>addMetaOg</method>
+                    </baobaz_social_layout_head_meta_og_add>
+                </observers>
+            </controller_action_layout_render_before_catalog_product_view>
+            <!-- Before page render -->
+            <controller_action_layout_render_before>
+                <observers>
+                    <!-- Facebook meta tags -->
+                    <baobaz_social_facebook_layout_head_meta_fb_add>
+                        <type>singleton</type>
+                        <class>baobaz_social/observer</class>
+                        <method>addFacebookMetaFb</method>
+                    </baobaz_social_facebook_layout_head_meta_fb_add>
+                    <!-- Google Plus One Javascript -->
+                    <baobaz_social_google_layout_endofbody_js_add>
+                        <type>singleton</type>
+                        <class>baobaz_social/observer</class>
+                        <method>addGooglePlusOneJs</method>
+                    </baobaz_social_google_layout_endofbody_js_add>
+                </observers>
+            </controller_action_layout_render_before>
+        </events>
+    </frontend>
+    <default>
+        <social>
+            <opengraph>
+                <enabled>0</enabled>
+            </opengraph>
+            <facebook>
+                <enabled>0</enabled>
+                <admins></admins>
+                <page_id></page_id>
+                <appid></appid>
+            </facebook>
+            <facebook_likebutton>
+                <enabled>0</enabled>
+                <href></href>
+                <format>XFBML</format>
+                <send>0</send>
+                <layout>standard</layout>
+                <showfaces>0</showfaces>
+                <action>like</action>
+                <font></font>
+                <colorscheme>light</colorscheme>
+            </facebook_likebutton>
+            <facebook_comments>
+                <enabled>0</enabled>
+                <href></href>
+                <width>400</width>
+                <num_posts>10</num_posts>
+                <colorscheme>light</colorscheme>
+            </facebook_comments>
+            <twitter_tweetbutton>
+                <enabled>0</enabled>
+                <url></url>
+                <via>Baobaz</via>
+                <text></text>
+                <related>baobaz:eCommerce for brands!</related>
+                <count>none</count>
+            </twitter_tweetbutton>
+            <google_plusonebutton>
+                <enabled>0</enabled>
+                <href></href>
+                <size>standard</size>
+                <annotation>bubble</annotation>
+                <width></width>
+                <expandto></expandto>
+            </google_plusonebutton>    
+        </social>
+    </default>
+</config>
