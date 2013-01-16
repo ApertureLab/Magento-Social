@@ -15,7 +15,7 @@ Features list:
 * Google
  * Google Plus One Button
 
-No Magento layout updates needed (uses Magento events).
+_No Magento layout updates needed (uses Magento events)._
 
 
 Configuration
@@ -28,11 +28,10 @@ Configuration
 Screenshots
 -----------
 
-![Baobaz_Social Product view](https://github.com/Baobaz/Magento_Baobaz_Social/raw/master/doc/screenshots/Baobaz_Social-ProductView.png "Baobaz_Social Product view")  
-[Baobaz_Social Product view](https://github.com/Baobaz/Magento_Baobaz_Social/raw/master/doc/screenshots/Baobaz_Social-ProductView.png)
+![Baobaz_Social Product view](https://raw.github.com/Narno/Magento_Baobaz_Social/master/doc/screenshots/Baobaz_Social-ProductViewDetails.png "Baobaz_Social Product view")  
 
-[Baobaz_Social Configuration](https://github.com/Baobaz/Magento_Baobaz_Social/raw/master/doc/screenshots/Baobaz_Social-Configuration.png)
-
+* [Product view](https://github.com/Baobaz/Magento_Baobaz_Social/raw/master/doc/screenshots/Baobaz_Social-ProductView.png)
+* [Magento Configuration](https://github.com/Baobaz/Magento_Baobaz_Social/raw/master/doc/screenshots/Baobaz_Social-Configuration.png)
 
 
 How to use?
@@ -81,7 +80,7 @@ Third party documentation
  * [Google+ Platform: +1 Button](https://developers.google.com/+/plugins/+1button/)
 
 
-ToDo
+To Do
 ----
 
 * Customizable Open Graph properties?
