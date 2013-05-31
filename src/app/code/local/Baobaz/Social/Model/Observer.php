@@ -35,6 +35,26 @@ class Baobaz_Social_Model_Observer
     }
 
     /**
+     * Observes controller_action_layout_render_before_catalog_product_view event
+     * to add Twitter Card meta twitter:
+     *
+     * @param Varien_Event_Observer $observer
+     * @return Baobaz_Social_Model_Observer
+     */
+    public function addMetaTwitter(Varien_Event_Observer $observer)
+    {
+        $headBlock = Mage::app()->getLayout()->getBlock('head');
+        if ($headBlock) {
+            $twBlock = Mage::app()->getLayout()->createBlock(
+                'baobaz_social/meta_twitter',
+                'baobaz_social_meta_twitter'
+            );
+            $headBlock->append($twBlock);
+        }
+        return $this;
+    }
+
+    /**
      * Observes controller_action_layout_render_before event
      * to add Facebook meta fb:
      *
@@ -68,6 +88,26 @@ class Baobaz_Social_Model_Observer
             $jsBlock = Mage::app()->getLayout()->createBlock(
                 'baobaz_social/javascript_gp1',
                 'baobaz_social_javascript_gp1'
+            );
+            $bbeBlock->append($jsBlock);
+        }
+        return $this;
+    }
+
+    /**
+     * Observes controller_action_layout_render_before event
+     * to add Pinsterest Javascript
+     *
+     * @param Varien_Event_Observer $observer
+     * @return Baobaz_Social_Model_Observer
+     */
+    public function addPinterestJs(Varien_Event_Observer $observer)
+    {
+        $bbeBlock = Mage::app()->getLayout()->getBlock('before_body_end');
+        if ($bbeBlock) {
+            $jsBlock = Mage::app()->getLayout()->createBlock(
+                'baobaz_social/javascript_pinterest',
+                'baobaz_social_javascript_pinterest'
             );
             $bbeBlock->append($jsBlock);
         }

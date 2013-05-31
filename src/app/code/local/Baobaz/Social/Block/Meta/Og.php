@@ -28,11 +28,15 @@ class Baobaz_Social_Block_Meta_Og
         $product = $this->getProduct();
         $tags = '<!-- Open Graph meta tags -->' . "\n";
         $tags .= $this->getMetaTag('title', $product->getName()) . "\n";
-        $tags .= $this->getMetaTag('type', 'product') . "\n";
-        $tags .= $this->getMetaTag('image', $this->helper('catalog/image')->init($product, 'image')) . "\n";
-        $tags .= $this->getMetaTag('url', $this->helper('core/url')->getCurrentUrl()) . "\n";
-        $tags .= $this->getMetaTag('site_name', Mage::getStoreConfig('general/store_information/name')) . "\n";
         $tags .= $this->getMetaTag('description', $this->stripTags($product->getDescription())) . "\n";
+        $tags .= $this->getMetaTag('url', $this->helper('core/url')->getCurrentUrl()) . "\n";
+        $tags .= $this->getMetaTag('image', $this->helper('catalog/image')->init($product, 'image')) . "\n";
+        $tags .= $this->getMetaTag('site_name', Mage::getStoreConfig('general/store_information/name')) . "\n";
+        $tags .= $this->getMetaTag('type', 'product') . "\n";
+        $tags .= $this->getMetaTag('price:amount', Mage::getModel('directory/currency')->format($product->getFinalPrice(), array('display'=>Zend_Currency::NO_SYMBOL), false)) . "\n";
+        $tags .= $this->getMetaTag('price:currency', Mage::app()->getStore()->getCurrentCurrencyCode()) . "\n";
+        $tags .= $this->getMetaTag('availability', ($product->getStockItem()->getIsInStock() ? 'in stock' : 'out of stock')) . "\n";
+
         return $tags;
     }
 

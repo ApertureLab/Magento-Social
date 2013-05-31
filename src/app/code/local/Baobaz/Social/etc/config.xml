@@ -63,6 +63,12 @@
                         <class>baobaz_social/observer</class>
                         <method>addMetaOg</method>
                     </baobaz_social_layout_head_meta_og_add>
+                    <!-- Product Twitter Card -->
+                    <baobaz_social_layout_head_meta_twitter_add>
+                        <type>singleton</type>
+                        <class>baobaz_social/observer</class>
+                        <method>addMetaTwitter</method>
+                    </baobaz_social_layout_head_meta_twitter_add>
                 </observers>
             </controller_action_layout_render_before_catalog_product_view>
             <!-- Before page render -->
@@ -80,6 +86,12 @@
                         <class>baobaz_social/observer</class>
                         <method>addGooglePlusOneJs</method>
                     </baobaz_social_google_layout_endofbody_js_add>
+                    <!-- Pinterest Javascript -->
+                    <baobaz_social_pinterest_layout_endofbody_js_add>
+                        <type>singleton</type>
+                        <class>baobaz_social/observer</class>
+                        <method>addPinterestJs</method>
+                    </baobaz_social_pinterest_layout_endofbody_js_add>
                 </observers>
             </controller_action_layout_render_before>
         </events>
