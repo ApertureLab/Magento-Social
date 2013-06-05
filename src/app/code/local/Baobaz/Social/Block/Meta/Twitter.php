@@ -8,14 +8,14 @@
  */
 
 /**
- * Baobaz Social Meta Twitter (product card)
+ * Baobaz Social Meta Twitter (Product Card)
  */
 class Baobaz_Social_Block_Meta_Twitter
-    extends Mage_Core_Block_Abstract
+    extends Baobaz_Social_Block_Meta_Abstract
 {
-    public function getProduct()
+    public function getMetaTag($property, $content, $propertyName='property')
     {
-        return Mage::registry('product');
+        return parent::getMetaTag("twitter:$property", $content, 'name');
     }
 
     /**
@@ -30,7 +30,7 @@ class Baobaz_Social_Block_Meta_Twitter
         $tags .= $this->getMetaTag('title', $product->getName()) . "\n";
         $tags .= $this->getMetaTag('description', $this->stripTags($product->getDescription())) . "\n";
         $tags .= $this->getMetaTag('card', 'product') . "\n";
-        //$tags .= $this->getMetaTag('creator', '@Baobaz') . "\n";
+        $tags .= $this->getMetaTag('creator', Mage::getStoreConfig('social/twitter_tweetbutton/via')) . "\n";
         $tags .= $this->getMetaTag('site', Mage::getStoreConfig('general/store_information/name')) . "\n";
         $tags .= $this->getMetaTag('image', $this->helper('catalog/image')->init($product, 'image')) . "\n";
         $tags .= $this->getMetaTag('data1', Mage::helper('core')->currency($product->getFinalPrice(), true, false)) . "\n";
@@ -40,24 +40,13 @@ class Baobaz_Social_Block_Meta_Twitter
     }
 
     /**
-     * Meta property tag (HTML)
-     *
-     * @param string $url
-     * @return string
-     */
-    public function getMetaTag($name, $content)
-    {
-        return sprintf('<meta name="twitter:%s" content="%s" />', $name, $content);
-    }
-
-    /**
      * Output method
      *
      * @return string
      */
     public function _toHtml()
     {
-        if (Mage::getStoreConfig('social/twittercard/enabled')) {
+        if (Mage::getStoreConfig('social/twitter_productcard/enabled')) {
             $tags = $this->getMetaTwitter();
             if ($tags !== false) {
                 return $tags;

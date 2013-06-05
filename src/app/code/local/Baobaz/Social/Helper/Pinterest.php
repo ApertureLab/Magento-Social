@@ -11,13 +11,8 @@
  * Baobaz Social Pinterest Helper
  */
 class Baobaz_Social_Helper_Pinterest
-    extends Mage_Core_Helper_Abstract
+    extends Baobaz_Social_Helper_Data
 {
-    public function getProduct()
-    {
-        return Mage::registry('current_product');
-    }
-
     /**
      * Build Pinterest Pin Button
      * 
@@ -25,29 +20,25 @@ class Baobaz_Social_Helper_Pinterest
      */
     public function getPinButton()
     {
-        if (!Mage::getStoreConfig('social/pinterest_button/enabled')) {
+        if (!Mage::getStoreConfig('social/pinterest_pinbutton/enabled')) {
             return;
         }
 
-        $url = (Mage::getStoreConfig('social/pinterest_button/url')) ?
-                Mage::getStoreConfig('social/pinterest_button/url') :
-                Mage::helper('core/url')->getCurrentUrl();
-        $media = Mage::helper('catalog/image')->init($this->getProduct(), 'image');
-        $description = $this->stripTags($this->getProduct()->getDescription());
+        $queryString = array(
+            'url'         => (Mage::getStoreConfig('social/pinterest_pinbutton/url')) ?
+                Mage::getStoreConfig('social/pinterest_pinbutton/url') :
+                Mage::helper('core/url')->getCurrentUrl(),
+            'media'       => Mage::helper('catalog/image')->init($this->getProduct(), 'image'),
+            'description' => $this->getProduct()->getName() . "\n" . 
+                $this->stripTags($this->getProduct()->getDescription()),
+        );
 
         $properties = array (
             'data-pin-do'     => 'buttonPin',
-            'data-pin-config' => Mage::getStoreConfig('social/pinterest_button/count'),
-        );        
+            'data-pin-config' => Mage::getStoreConfig('social/pinterest_pinbutton/count'),
+        );
 
-        foreach ($properties as $key => $value) {
-            if ($value) {
-                $arrayProperties[] = $key . '="' . $value . '"';
-            }
-        }
-        $concatenedProperties = implode(" ", $arrayProperties);
-
-        return '<a href="//pinterest.com/pin/create/button/?url=' . urlencode($url) . '&media=' . urlencode($media) . '&description=' . urlencode($description) . '" ' .
-            $concatenedProperties . '><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /></a>' . "\n";
+        return '<a href="//pinterest.com/pin/create/button/?' . $this->_buildQuery($queryString, 'inline') . '" ' .
+            $this->_buildQuery($properties, 'properties') . '><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /></a>' . "\n";
     }
 }

@@ -17,6 +17,7 @@ class Baobaz_Social_Model_Adminhtml_System_Config_Source_Facebook_Format
         return array(
             array('value'=>'iframe', 'label'=>Mage::helper('baobaz_social')->__('iframe')),
             array('value'=>'XFBML', 'label'=>Mage::helper('baobaz_social')->__('XFBML')),
+            array('value'=>'HTML5', 'label'=>Mage::helper('baobaz_social')->__('HTML5')),
         );
     }
 }

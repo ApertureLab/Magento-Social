@@ -2,7 +2,7 @@
 /**
  * @category   Baobaz
  * @package    Baobaz_Social
- * @copyright  Copyright (c) 2011 Baobaz (http://www.baobaz.com)
+ * @copyright  Copyright (c) 2011-2013 Baobaz (http://www.baobaz.com)
  * @author     Arnaud Ligny <arnaud.ligny@baobaz.com>
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
@@ -11,8 +11,13 @@
  * Baobaz Social Meta FB
  */
 class Baobaz_Social_Block_Meta_Fb
-    extends Mage_Core_Block_Abstract
+    extends Baobaz_Social_Block_Meta_Abstract
 {
+    public function getMetaTag($property, $content, $propertyName='property')
+    {
+        return parent::getMetaTag("fb:$property", $content);
+    }
+
     /**
      * Get meta FB tags
      *
@@ -31,17 +36,6 @@ class Baobaz_Social_Block_Meta_Fb
             $tags .= $this->getMetaTag('app_id', Mage::getStoreConfig('social/facebook/appid')) . "\n";
         }
         return $tags;
-    }
-
-    /**
-     * Meta property tag (HTML)
-     *
-     * @param string $url
-     * @return string
-     */
-    public function getMetaTag($property, $content)
-    {
-        return sprintf('<meta property="fb:%s" content="%s" />', $property, $content);
     }
 
     /**

@@ -2,7 +2,7 @@
 /**
  * @category   Baobaz
  * @package    Baobaz_Social
- * @copyright  Copyright (c) 2011 Baobaz (http://www.baobaz.com)
+ * @copyright  Copyright (c) 2011-2013 Baobaz (http://www.baobaz.com)
  * @author     Arnaud Ligny <arnaud.ligny@baobaz.com>
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
@@ -11,7 +11,7 @@
  * Baobaz Social Google Helper
  */
 class Baobaz_Social_Helper_Google
-    extends Mage_Core_Helper_Abstract
+    extends Baobaz_Social_Helper_Data
 {
     /**
      * Build Google Plus One Button
@@ -34,13 +34,6 @@ class Baobaz_Social_Helper_Google
             'expandto'   => Mage::getStoreConfig('social/google_plusonebutton/expandto'),
         );
 
-        foreach ($properties as $key => $value) {
-            if ($value) {
-                $arrayProperties[] = $key . '="' . $value . '"';
-            }
-        }
-        $concatenedProperties = implode(" ", $arrayProperties);
-
-        return '<g:plusone ' . $concatenedProperties . '></g:plusone>' . "\n";
+        return '<g:plusone ' . $this->_buildQuery($properties, 'properties') . '></g:plusone>' . "\n";
     }
 }

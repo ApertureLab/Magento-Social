@@ -15,7 +15,7 @@ class Baobaz_Social_Block_Javascript_Pinterest
 {
     public function _toHtml()
     {
-        if (Mage::getStoreConfig('social/pinterest_button/enabled')) {
+        if (Mage::getStoreConfig('social/pinterest_pinbutton/enabled')) {
             $javascript = '<script type="text/javascript">
 (function(d){
   var f = d.getElementsByTagName(\'SCRIPT\')[0], p = d.createElement(\'SCRIPT\');

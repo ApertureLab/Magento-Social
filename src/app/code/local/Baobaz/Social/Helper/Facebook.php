@@ -2,7 +2,7 @@
 /**
  * @category   Baobaz
  * @package    Baobaz_Social
- * @copyright  Copyright (c) 2011 Baobaz (http://www.baobaz.com)
+ * @copyright  Copyright (c) 2011-2013 Baobaz (http://www.baobaz.com)
  * @author     Arnaud Ligny <arnaud.ligny@baobaz.com>
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
@@ -11,7 +11,7 @@
  * Baobaz Social Facebook Helper
  */
 class Baobaz_Social_Helper_Facebook 
-    extends Mage_Core_Helper_Abstract
+    extends Baobaz_Social_Helper_Data
 {
     /**
      * Build FB Like Button
@@ -54,7 +54,7 @@ class Baobaz_Social_Helper_Facebook
             $properties['show_faces'] = 'false';
         }
 
-        // adjust size
+        // adjust size by layout type
         switch (Mage::getStoreConfig('social/facebook_likebutton/layout')) {
             case 'box_count':
                 $properties['height'] = '65';
@@ -65,10 +65,18 @@ class Baobaz_Social_Helper_Facebook
         }
 
         // iframe
-        if ($this->getLikeButtonFormat() == 'iframe') {
+        if (Mage::getStoreConfig('social/facebook_likebutton/format') == 'iframe') {
+            $properties['width'] = '';
+            $properties['height'] = '35';
             return $this->renderIframeLikeButton($properties);
-        } elseif ($this->getLikeButtonFormat() == 'XFBML') { //XFBML
+        }
+        // XFBML
+        elseif (Mage::getStoreConfig('social/facebook_likebutton/format') == 'XFBML') {
             return $this->renderXfbmlLikeButton($properties);
+        }
+        // HTML5
+        elseif (Mage::getStoreConfig('social/facebook_likebutton/format') == 'HTML5') {
+            return $this->renderHtml5LikeButton($properties);
         }
     }
     
@@ -94,27 +102,10 @@ class Baobaz_Social_Helper_Facebook
             
         );
 
-        foreach ($properties as $key => $value) {
-            if ($value) {
-                $arrayProperties[] = $key . '="' . $value . '"';
-            }
-        }
-        $concatenedProperties = implode(' ', $arrayProperties);
-
         return '<script src="http://connect.facebook.net/' . $properties['locale'] . 
-            '/all.js#xfbml=1"></script><fb:comments ' . $concatenedProperties . '></fb:comments>' . "\n";
+            '/all.js#xfbml=1"></script><fb:comments ' . $this->_buildQuery($properties, 'properties') . '></fb:comments>' . "\n";
     }
-    
-    /**
-     * Returns Like button format set in BO
-     * 
-     * @return string
-     */
-    public function getLikeButtonFormat()
-    {
-        return Mage::getStoreConfig('social/facebook_likebutton/format');
-    }
-    
+
     /**
      * Renders HTML of iframe Like button
      * 
@@ -126,14 +117,14 @@ class Baobaz_Social_Helper_Facebook
     {
         $properties['send'] = '';
         return '<iframe src="http://www.facebook.com/plugins/like.php?' . 
-            $this->_buildQuery($properties, '&') . 
+            $this->_buildQuery($properties) . 
             '" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:' . 
             $properties['width'] . 'px; height:' . $properties['height'] . 
             'px;" allowTransparency="true"></iframe>' . "\n";
     }
     
     /**
-     * Renders XFBML Like button HTML
+     * Renders XFBML Like button
      * 
      * @param array $properties Button properties
      * 
@@ -142,30 +133,47 @@ class Baobaz_Social_Helper_Facebook
     public function renderXfbmlLikeButton(array $properties)
     {
         $properties['width'] = '';
-        return '<script src="http://connect.facebook.net/' . $properties['locale'] . 
-            '/all.js#xfbml=1"></script><fb:like ' . $this->_buildQuery($properties, ' ') . 
-            '></fb:like>' . "\n";
+        return '<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/' . $properties['locale'] . '/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, \'script\', \'facebook-jssdk\'));</script>' . "\n" . 
+'<fb:like ' . $this->_buildQuery($properties, 'properties') . '></fb:like>' . "\n";
     }
     
     /**
-     * Builds HTTP query from button properties array
+     * Renders HTML5 Like button
      * 
-     * @param array  $properties
-     * @param string $querySeparator
-     *
-     * @todo to mutualize between each helpers
+     * @param array $properties Button properties
      * 
      * @return string
      */
-    protected function _buildQuery($properties, $querySeparator)
+    public function renderHtml5LikeButton(array $properties)
     {
-        $arrayProperties = array();
-        foreach ($properties as $key => $value) {
-            if ($value) {
-                $arrayProperties[] = $key . '="' . $value . '"';
-            }
-        }
-        
-        return implode($querySeparator, $arrayProperties);
+        $properties['width'] = '';
+        return '<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/' . $properties['locale'] . '/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, \'script\', \'facebook-jssdk\'));</script>' . "\n" . 
+'<div class="fb-like" ' . $this->_buildQuery($properties, 'properties') . '></div>' . "\n";       
     }
+
+    /**
+     * Return Like Button URL only
+     * 
+     * @return string
+     */
+    /*
+    public function getLikeButtonUrl()
+    {
+        return _buildQuery($properties, $type='inline');
+    }
+    */
 }

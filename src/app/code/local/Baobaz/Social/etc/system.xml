@@ -20,7 +20,7 @@
             <show_in_store>1</show_in_store>
             <groups>
                 <opengraph translate="label">
-                    <label>Open Graph Tags</label>
+                    <label>Open Graph</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>100</sort_order>
                     <show_in_default>1</show_in_default>
@@ -30,7 +30,7 @@
                     <fields>
                         <enabled translate="label">
                             <label>Enabled</label>
-                            <comment>Available properties: title, type, image, url, site_name</comment>
+                            <comment>Available properties: title, description, url, image, site_name, type, price:amount, price:currency, availability</comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>4</sort_order>
@@ -40,27 +40,6 @@
                         </enabled>
                     </fields>
                 </opengraph>
-                <twittercard translate="label">
-                    <label>Twitter Card Tags</label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>100</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-                    <expanded>1</expanded>
-                    <fields>
-                        <enabled translate="label">
-                            <label>Enabled</label>
-                            <comment>Available properties: title, description, type, creator, image, site, data1 (price)</comment>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>4</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </enabled>
-                    </fields>
-                </twittercard>
                 <facebook translate="label">
                     <label>Facebook</label>
                     <frontend_type>text</frontend_type>
@@ -111,7 +90,7 @@
                     </fields>
                 </facebook>
                 <facebook_likebutton translate="label">
-                    <label>Facebook Like Button</label>
+                    <label>Facebook - Like Button</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>102</sort_order>
                     <show_in_default>1</show_in_default>
@@ -209,7 +188,7 @@
                     </fields>
                 </facebook_likebutton>
                 <facebook_comments translate="label">
-                    <label>Facebook Comments</label>
+                    <label>Facebook - Comments</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>103</sort_order>
                     <show_in_default>1</show_in_default>
@@ -268,7 +247,7 @@
                     </fields>
                 </facebook_comments>
                 <twitter_tweetbutton translate="label">
-                    <label>Twitter Tweet Button</label>
+                    <label>Twitter - Tweet Button</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>104</sort_order>
                     <show_in_default>1</show_in_default>
@@ -333,10 +312,30 @@
                         </count>
                     </fields>
                 </twitter_tweetbutton>
-                <google_plusonebutton translate="label">
-                    <label>Google Plus One Button</label>
+                <twitter_productcard translate="label">
+                    <label>Twitter - Product Card</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>105</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <comment>Available properties: title, description, card=product, creator=via, site, image, data1=final_price, label1=Price</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </twitter_productcard>
+                <google_plusonebutton translate="label">
+                    <label>Google - Plus One Button</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>106</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
@@ -402,10 +401,10 @@
                         </expandto>
                     </fields>
                 </google_plusonebutton>
-                <pinterest_button translate="label">
-                    <label>Pinterest Button</label>
+                <pinterest_pinbutton translate="label">
+                    <label>Pinterest - Pin Button</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>106</sort_order>
+                    <sort_order>107</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
@@ -440,7 +439,26 @@
                             <show_in_store>1</show_in_store>
                         </count>
                     </fields>
-                </pinterest_button>
+                </pinterest_pinbutton>
+                <tumblr_sharebutton translate="label">
+                    <label>Tumblr - Share Button</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>108</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </tumblr_sharebutton>
             </groups>
         </social>
     </sections>
