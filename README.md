@@ -30,8 +30,8 @@ Screenshots
 
 ![Baobaz_Social Product view](https://raw.github.com/Narno/Magento_Baobaz_Social/master/doc/screenshots/Baobaz_Social-ProductViewDetails.png "Baobaz_Social Product view")  
 
-* [Product view](https://github.com/Baobaz/Magento_Baobaz_Social/raw/master/doc/screenshots/Baobaz_Social-ProductView.png)
-* [Magento Configuration](https://github.com/Baobaz/Magento_Baobaz_Social/raw/master/doc/screenshots/Baobaz_Social-Configuration.png)
+* [Product view](https://raw.github.com/Narno/Magento_Baobaz_Social/master/doc/screenshots/Baobaz_Social-ProductView.png)
+* [Magento Configuration](https://raw.github.com/Narno/Magento_Baobaz_Social/master/doc/screenshots/Baobaz_Social-Configuration.png)
 
 
 How to use?
