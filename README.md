@@ -1,9 +1,6 @@
-Description
------------
+Magento 1 module that provides social features (sharing).
 
-_Baobaz Social_ provides social features (sharing) to Magento.
-
-Features list:
+## Features
 
 * Open Graph meta tags
 * Facebook
@@ -20,25 +17,19 @@ Features list:
 
 _No Magento layout updates needed (uses Magento events)._
 
-
-Configuration
--------------
+## Configuration
 
 * Config
  * System > Configuration > General > Social
 
+## Screenshots
 
-Screenshots
------------
+![Product view](https://raw.github.com/ApertureLab/Magento-Social/master/doc/screenshots/Baobaz_Social-ProductViewDetails.png "Product view")  
 
-![Baobaz_Social Product view](https://raw.github.com/Narno/Magento_Baobaz_Social/master/doc/screenshots/Baobaz_Social-ProductViewDetails.png "Baobaz_Social Product view")  
+* [Product view](https://raw.github.com/ApertureLab/Magento-Social/master/doc/screenshots/Baobaz_Social-ProductView.png)
+* [Magento Configuration](https://raw.github.com/ApertureLab/Magento-Social/master/doc/screenshots/Baobaz_Social-Configuration.png)
 
-* [Product view](https://raw.github.com/Narno/Magento_Baobaz_Social/master/doc/screenshots/Baobaz_Social-ProductView.png)
-* [Magento Configuration](https://raw.github.com/Narno/Magento_Baobaz_Social/master/doc/screenshots/Baobaz_Social-Configuration.png)
-
-
-How to use?
------------
+## How to use?
 
 1. Fill credentials and configure options of each service
 2. Put an helper call in your (catalog/product) templates. Available Helpers:
@@ -49,9 +40,7 @@ How to use?
  * Pinterest Pin Button: ```<?php echo Mage::helper('baobaz_social/pinterest')->getPinButton(); ?>```
  * Tumblr share Button: ```<?php echo Mage::helper('baobaz_social/tumblr')->getShareButton(); ?>```
 
-
-Example of generated meta tags
-------------------------------
+## Example of generated meta tags
 
 ```
 <!-- Facebook meta tags -->
@@ -79,9 +68,7 @@ Example of generated meta tags
 <meta name="twitter:label1" content="Price" />
 ```
 
-
-Third party documentation
--------------------------
+## Third party documentation
 
 * [The Open Graph Protocol](http://ogp.me/)
 * Facebook
@@ -98,17 +85,13 @@ Third party documentation
 * Tumblr
  * [Share buttons](http://www.tumblr.com/buttons)
 
-
-To Do
------
+## To Do
 
 * Customizable Open Graph properties?
 
+## License
 
-License
--------
-
-_Baobaz Social_ is released under the terms of the [Open Software License 3.0](http://opensource.org/licenses/OSL-3.0).
+Released under the terms of the [Open Software License 3.0](http://opensource.org/licenses/OSL-3.0).
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
