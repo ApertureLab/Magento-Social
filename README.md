@@ -1,4 +1,6 @@
-Magento 1 module that provides social features (sharing).
+# Magento-Social
+
+> Magento 1 module that provides social features (sharing).
 
 ## Features
 
@@ -24,25 +26,25 @@ _No Magento layout updates needed (uses Magento events)._
 
 ## Screenshots
 
-![Product view](https://raw.github.com/ApertureLab/Magento-Social/master/doc/screenshots/Baobaz_Social-ProductViewDetails.png "Product view")  
+![Product view](doc/screenshots/Baobaz_Social-ProductViewDetails.png "Product view")  
 
-* [Product view](https://raw.github.com/ApertureLab/Magento-Social/master/doc/screenshots/Baobaz_Social-ProductView.png)
-* [Magento Configuration](https://raw.github.com/ApertureLab/Magento-Social/master/doc/screenshots/Baobaz_Social-Configuration.png)
+* [Product view](doc/screenshots/Baobaz_Social-ProductView.png)
+* [Magento Configuration](doc/screenshots/Baobaz_Social-Configuration.png)
 
 ## How to use?
 
 1. Fill credentials and configure options of each service
 2. Put an helper call in your (catalog/product) templates. Available Helpers:
- * FacebookLike Button: ```<?php echo Mage::helper('baobaz_social/facebook')->getLikeButton($this); ?>```
- * Facebook Comments: ```<?php echo Mage::helper('baobaz_social/facebook')->getComments(); ?>```
- * Twitter Tweet Button: ```<?php echo Mage::helper('baobaz_social/twitter')->getTweetButton(); ?>```
- * Google Plus One Button: ```<?php echo Mage::helper('baobaz_social/google')->getGooglePlusOneButton(); ?>```
- * Pinterest Pin Button: ```<?php echo Mage::helper('baobaz_social/pinterest')->getPinButton(); ?>```
- * Tumblr share Button: ```<?php echo Mage::helper('baobaz_social/tumblr')->getShareButton(); ?>```
+  * FacebookLike Button: `<?php echo Mage::helper('baobaz_social/facebook')->getLikeButton($this); ?>`
+  * Facebook Comments: `<?php echo Mage::helper('baobaz_social/facebook')->getComments(); ?>`
+  * Twitter Tweet Button: `<?php echo Mage::helper('baobaz_social/twitter')->getTweetButton(); ?>`
+  * Google Plus One Button: `<?php echo Mage::helper('baobaz_social/google')->getGooglePlusOneButton(); ?>`
+  * Pinterest Pin Button: `<?php echo Mage::helper('baobaz_social/pinterest')->getPinButton(); ?>`
+  * Tumblr share Button: `<?php echo Mage::helper('baobaz_social/tumblr')->getShareButton(); ?>`
 
 ## Example of generated meta tags
 
-```
+```html
 <!-- Facebook meta tags -->
 <meta property="fb:admins" content="1234567890" />
 <meta property="fb:page_id" content="1234567890" />
